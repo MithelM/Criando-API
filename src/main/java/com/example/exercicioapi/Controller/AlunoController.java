@@ -41,11 +41,11 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Aluno> atualizarAluno(@PathVariable( value = "id")Long id){
+    public ResponseEntity<Aluno> atualizarAluno(@RequestBody Aluno aluno , @PathVariable( value = "id")Long id){
         Aluno aln = _as.getAlunoPorID(id);
 
         if (aln != null){
-            _as.cadastroAluno(aln);
+            _as.cadastroAluno(aluno);
             return new ResponseEntity<>(aln, HttpStatus.OK);
         }
 
