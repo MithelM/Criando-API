@@ -30,9 +30,9 @@ public class AlunoController {
         return alunos;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Aluno> obterAluno(@PathVariable(value = "id") Long id){
-        Aluno aln = _as.getAlunoPorID(id);
+            Aluno aln = _as.getAlunoPorID(id);
 
         if (aln != null){
             return new ResponseEntity<Aluno>(aln, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class AlunoController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<Aluno> atualizarAluno(@RequestBody Aluno aluno , @PathVariable( value = "id")Long id){
         Aluno aln = _as.getAlunoPorID(id);
 
@@ -66,7 +66,7 @@ public class AlunoController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Aluno> deletarAluno(@PathVariable( value = "id")Long id){
         Aluno aln = _as.getAlunoPorID(id);
 
