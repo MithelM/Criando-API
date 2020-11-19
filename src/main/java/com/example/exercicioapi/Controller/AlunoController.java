@@ -45,6 +45,20 @@ public class AlunoController {
         Aluno aln = _as.getAlunoPorID(id);
 
         if (aln != null){
+            if (aluno.getId() == null){
+                aluno.setId(aln.getId());
+
+                if (aluno.getCpf() == null){
+                    aluno.setCpf(aln.getCpf());
+                }if (aluno.getCurso() == null){
+                    aluno.setCurso(aln.getCurso());
+                }if (aluno.getNome() == null){
+                    aluno.setNome(aln.getNome());
+                }if (aluno.getRa() == 0){
+                    aluno.setRa(aln.getRa());
+                }
+            }
+
             _as.cadastroAluno(aluno);
             return new ResponseEntity<>(aln, HttpStatus.OK);
         }
